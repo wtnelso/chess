@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package team059;
-
+import java.sql.*;
 /**
  *
  * @author Turner
@@ -14,8 +14,8 @@ public class Team059 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws ClassNotFoundException {
+        new db_connection().dbTest();
     }
     
 }
