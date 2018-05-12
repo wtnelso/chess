@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package chess;
+import chess.data_model.pieces.*;
+import chess.data_model.utility.*;
 
 /**
  *

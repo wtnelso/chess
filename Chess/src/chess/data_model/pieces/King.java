@@ -3,29 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package chess;
+package chess.data_model.pieces;
 
 /**
  *
  * @author Turner
  */
-public class Knight extends Piece {
-    public Knight(char color, int id){
+public class King extends Piece {
+    public King(char color, int id){
         this.id = id;
         this.color = color;
-        this.firstMoveMax = 4;
-        this.verticalMoveMax = 3;
+        this.firstMoveMax = 1;
+        this.verticalMoveMax = 1;
         this.horizontalMoveMax = 1;
-        this.diagonalMoveMax = 0;
+        this.diagonalMoveMax = 1;
     }
         
     @Override
     public boolean isBackwardAllowed() {
          return ! this.isBackward;
-     }
-
-    @Override
-    public boolean isMoveDirectionValid(Move move) {
-         return (move.getHorizontalMove() == 1 && move.getVerticalMove() == 2) || (move.getHorizontalMove() == 2 && move.getVerticalMove() == 1);
      }
 }
