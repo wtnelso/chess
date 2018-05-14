@@ -5,24 +5,50 @@
  */
 package chess;
 
+import chess.data_model.utility.BoardResponse;
+
 /**
  *
  * @author Turner
  */
 public class Player {
+    private final char _color;
+    private int _aliveCount;
+    private boolean _isCurrentPlayer;
+        
     public Player(char color){
-            this._color = color;
-            this._aliveCount = 16;
+        this._color = color;
+        this._aliveCount = 16;
+    }
+    
+    public Player() {
+        this._color = ' ';
+        this._aliveCount = 0;
+    }
+
+    public int getAliveCount(){
+        return this._aliveCount;
+    }
+
+    private void _decreaseAliveCount(){
+        this._aliveCount--;
+    }
+    
+    public void setIsCurrentPlayer(boolean isCurrentPlayer){
+        this._isCurrentPlayer = isCurrentPlayer;
+    }
+    
+    public boolean isCurrentPlayer(){
+        return this._isCurrentPlayer;
+    }
+    
+    public char getColor(){
+        return this._color;
+    }
+    
+    public void updatePlayer(BoardResponse boardResponse){
+        if (boardResponse.isEnemyKilled()){
+            this._decreaseAliveCount();
         }
-        
-        private final char _color;
-        private int _aliveCount;
-        
-        public int getAliveCount(){
-            return this._aliveCount;
-        }
-        
-        public void decreaseAliveCount(){
-            this._aliveCount--;
-        }
+    }
 }

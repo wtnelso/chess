@@ -11,9 +11,12 @@ import chess.Move;
  * @author Turner
  */
 public class Knight extends Piece {
-    public Knight(char color, int id){
-        this.id = id;
+    public Knight(char color, int id, int xSpace, int ySpace){
         this.color = color;
+        this.id = id;
+        this.xSpace = xSpace;
+        this.ySpace = ySpace;
+        this.pieceType = 'k';
         this.firstMoveMax = 4;
         this.verticalMoveMax = 3;
         this.horizontalMoveMax = 1;
@@ -27,6 +30,16 @@ public class Knight extends Piece {
 
     @Override
     public boolean isMoveDirectionValid(Move move) {
-         return (move.getHorizontalMove() == 1 && move.getVerticalMove() == 2) || (move.getHorizontalMove() == 2 && move.getVerticalMove() == 1);
-     }
+        return (move.getHorizontalMove() == 1 && move.getVerticalMove() == 2) || (move.getHorizontalMove() == 2 && move.getVerticalMove() == 1);
+    }
+    
+    @Override
+    public boolean isPiece(){
+        return ! this.isPiece;
+    }
+    
+    @Override
+    public String print(){
+        return this.getPieceType()+ "(" + this.getId()+ ")";
+    }
 }

@@ -9,13 +9,26 @@ package chess.data_model.pieces;
  *
  * @author Turner
  */
-public class Pawn extends Piece {
-    public Pawn(char color, int id){
-        this.id = id;
+public class Pawn extends Piece  {
+    public Pawn(char color, int id, int xSpace, int ySpace) {
         this.color = color;
+        this.id = id;
+        this.xSpace = xSpace;
+        this.ySpace = ySpace;
+        this.pieceType = 'P';
         this.firstMoveMax = 2;
         this.verticalMoveMax = 1;
         this.horizontalMoveMax = 0;
         this.diagonalMoveMax = 1;
+    }
+    
+    @Override
+    public boolean isPiece(){
+        return ! this.isPiece;
+    }
+    
+    @Override
+    public String print(){
+        return this.getPieceType()+ "(" + this.getId()+ ")";
     }
 }

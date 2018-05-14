@@ -13,12 +13,12 @@ import chess.data_model.utility.PlayResponse;
 public class Game {
     private Player _playerWhite;
     private Player _playerBlack;
-    private Board _board;
-    private PlayResponse _playResponse;
+    private final Board _board;
+    private final PlayResponse _playResponse;
 
     public Game(){
         this._playerWhite = new Player('w');
-        this._playerWhite = new Player('b');
+        this._playerBlack = new Player('b');
         this._board = new Board();
         this._playResponse = new PlayResponse();
     }
@@ -44,7 +44,20 @@ public class Game {
     }
 
     public void play(){
-        this._playResponse.setPlayResponseStatus(false);
+        this._playResponse.setPlayResponseStatus(true);
         this._playResponse.setPlayResponseMessage("End");
+    }
+    
+    public Board getBoard(){
+        return this._board;
+    }
+    
+    public Player getPlayerWhite(){
+        this._playerWhite.setIsCurrentPlayer(true);
+        return this._playerWhite;
+    }
+    
+    public Player getPlayerBlack(){
+        return this._playerBlack;
     }
 }

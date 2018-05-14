@@ -13,6 +13,10 @@ import chess.Move;
 public class Piece {
         public int id;
         public char color = ' ';
+        public int xSpace;
+        public int ySpace;
+        public char pieceType = ' ';
+        public boolean isPiece;
         public boolean isBackward;
         public int firstMoveMax;
         public boolean isfirstMoveUsed;
@@ -35,6 +39,15 @@ public class Piece {
         
         public char getColor(){
             return this.color;
+        }
+        
+        public void setSpace(int xSpace, int ySpace){
+            this.xSpace = xSpace;
+            this.ySpace = ySpace;
+        }
+        
+        public Integer[] getSpace(){
+            return new Integer[] {this.xSpace, this.ySpace};
         }
         
         public boolean isBackwardAllowed() {
@@ -86,5 +99,17 @@ public class Piece {
         
         public boolean isAlive(){
             return this._isAlive;
+        }
+        
+        public char getPieceType(){
+            return this.pieceType;
+        }
+        
+        public boolean isPiece(){
+            return this.isPiece;
+        }
+        
+        public String print(){
+            return "     ";
         }
 }
