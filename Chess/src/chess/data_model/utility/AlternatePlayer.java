@@ -11,11 +11,13 @@ import chess.Player;
  * @author Turner
  */
 public class AlternatePlayer {
-    public static Player AlternatePlayer(Player playerWhite, Player playerBlack){
+    public static Player AlternatePlayer(Player playerWhite, Player playerBlack, GameController gameController){
         boolean isPlayerCurrent = playerWhite.isCurrentPlayer();
         playerWhite.setIsCurrentPlayer(! isPlayerCurrent);
         playerBlack.setIsCurrentPlayer(isPlayerCurrent);
         
-        return playerWhite.isCurrentPlayer() ? playerWhite : playerBlack;
+        Player currentPlayer = playerWhite.isCurrentPlayer() ? playerWhite : playerBlack;
+        gameController.setPlayer(currentPlayer);
+        return currentPlayer;
     }
 }

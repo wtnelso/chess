@@ -19,7 +19,7 @@ public class UserInput {
     private final Move _move = new Move();
     private final Piece _piece = new Piece();
     
-    public UserInput(InputStream input){
+    public UserInput(InputStream input, GameController gameController){
         this._inputString = new Scanner(input).nextLine();
         if (this._isInputValid().getUserInputResponseStatus()){
             
