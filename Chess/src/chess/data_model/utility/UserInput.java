@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package chess.data_model.utility;
+import chess.Board;
 import chess.Move;
 import chess.data_model.pieces.Piece;
 import java.io.InputStream;
@@ -13,7 +14,7 @@ import java.util.Scanner;
  *
  * @author Turner
  */
-public class UserInput {
+public final class UserInput {
     private final UserInputResponse _inputResponse = new UserInputResponse();
     private final String _inputString;
     private final Move _move = new Move();
@@ -22,7 +23,16 @@ public class UserInput {
     public UserInput(InputStream input, GameController gameController){
         this._inputString = new Scanner(input).nextLine();
         if (this._isInputValid().getUserInputResponseStatus()){
-            
+            if(gameController.getCurrentPlayer().isPieceInput()){
+                if(Integer.parseInt(this._inputString) < 1){
+                    
+                }
+                if(gameController.getCurrentPlayer().getColor() != this.getPiece(this._inputString, gameController.getBoard()).getColor()){
+
+                }
+                gameController.getCurrentPlayer().setIsPieceInput(false);
+                gameController.getCurrentPlayer().setIsMoveInput(true);
+            }
         } else {
             System.out.println(this._isInputValid().getUserInputResponseMessage());
         }
@@ -43,7 +53,14 @@ public class UserInput {
         return this._move;
     }
     
-    public Piece getPiece(){
-        return this._piece;
+    public Piece getPiece(String inputString, Board board){
+        for(int x = 0; x < 8; x++){
+            for(int y = 0; y < 8; y++){
+                if (board.board[x][y].getId() == Integer.parseInt(inputString)) {
+                    return board.board[x][y];
+                }
+            }
+        }
+        return new Piece();
     }
 }

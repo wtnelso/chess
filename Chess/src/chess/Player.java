@@ -13,11 +13,15 @@ import chess.data_model.utility.BoardResponse;
  */
 public class Player {
     private final char _color;
+    private String _fullColor;
     private int _aliveCount;
     private boolean _isCurrentPlayer;
-        
-    public Player(char color){
+    private boolean _isPieceInput;
+    private boolean _isMoveInput;
+    
+    public Player(char color, String fullColor){
         this._color = color;
+        this._fullColor = fullColor;
         this._aliveCount = 16;
     }
     
@@ -46,9 +50,29 @@ public class Player {
         return this._color;
     }
     
+    public String geFulltColor(){
+        return this._fullColor;
+    }
+    
     public void updatePlayer(BoardResponse boardResponse){
         if (boardResponse.isEnemyKilled()){
             this._decreaseAliveCount();
         }
+    }
+    
+    public void setIsPieceInput(boolean isPieceInput){
+        this._isPieceInput = isPieceInput;
+    }
+    
+    public boolean isPieceInput(){
+        return this._isPieceInput;
+    }
+    
+    public void setIsMoveInput(boolean isMoveInput){
+        this._isMoveInput = isMoveInput;
+    }
+    
+    public boolean isMoveInput(){
+        return this._isMoveInput;
     }
 }

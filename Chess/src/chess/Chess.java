@@ -23,7 +23,7 @@ public class Chess {
         Player playerBlack = game.getPlayerBlack();
         Player currentPlayer = new Player();
         UserInput userInput;
-        GameController gameController = new GameController(playerWhite);
+        GameController gameController = new GameController(playerWhite, board);
         
         
         board.draw();
@@ -46,13 +46,14 @@ public class Chess {
         if(gameController._isStart()){
             System.out.println("Welcome to Chess!");
         }
-        if(gameController.getPlayer().getColor() == 'w'){
-            System.out.println("Player White's Turn");
-        } else {
-            System.out.println("Player Black's Turn");
-        }
+        System.out.println("Player " + gameController.getCurrentPlayer().geFulltColor() +"'s Turn");
+        
         System.out.println("Which Piece would you like to move? Enter a piece ID:");
-        gameController.setPieceInput(true);
+        gameController.getCurrentPlayer().setIsMoveInput(true);
+        
+        if(gameController.getCurrentPlayer().isMoveInput()){
+            System.out.println("Enter the direction of the move:"); 
+        }
         return gameController;
     }
 }

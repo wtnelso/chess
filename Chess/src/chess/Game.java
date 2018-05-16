@@ -17,8 +17,8 @@ public class Game {
     private final PlayResponse _playResponse;
 
     public Game(){
-        this._playerWhite = new Player('w');
-        this._playerBlack = new Player('b');
+        this._playerWhite = new Player('w',"White");
+        this._playerBlack = new Player('b',"Black");
         this._board = new Board();
         this._playResponse = new PlayResponse();
     }

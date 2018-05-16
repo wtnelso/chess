@@ -5,6 +5,7 @@
  */
 package chess.data_model.utility;
 
+import chess.Board;
 import chess.Player;
 
 /**
@@ -15,10 +16,13 @@ public class GameController {
     private boolean _isStart;
     private Player _currentPlayer;
     private boolean _isPieceInput;
+    private Board _board;
     
-    public GameController(Player currentPlayer){
+    public GameController(Player currentPlayer, Board board){
         this._isStart = true;
         this._currentPlayer = currentPlayer;
+        this._board = board;
+        currentPlayer.setIsPieceInput(true);
     }
     
     public boolean _isStart(){
@@ -33,15 +37,11 @@ public class GameController {
         this._currentPlayer = currentPlayer;
     }
     
-    public Player getPlayer(){
+    public Player getCurrentPlayer(){
         return this._currentPlayer;
     }
     
-    public void setPieceInput(boolean isPieceInput){
-        this._isPieceInput = isPieceInput;
-    }
-    
-    public boolean isPieceInput(){
-        return this._isPieceInput;
+    public Board getBoard(){
+        return this._board;
     }
 }
