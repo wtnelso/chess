@@ -17,7 +17,7 @@ public class AlternatePlayer {
         playerBlack.setIsCurrentPlayer(isPlayerCurrent);
         
         Player currentPlayer = playerWhite.isCurrentPlayer() ? playerWhite : playerBlack;
-        gameController.setPlayer(currentPlayer);
+        gameController.setCurrentPlayer(currentPlayer);
         return currentPlayer;
     }
 }

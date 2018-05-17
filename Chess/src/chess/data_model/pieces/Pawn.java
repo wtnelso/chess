@@ -20,6 +20,7 @@ public class Pawn extends Piece  {
         this.verticalMoveMax = 1;
         this.horizontalMoveMax = 0;
         this.diagonalMoveMax = 1;
+        this.acceptableMoveInputs = new String[] {"f", "dfl", "dfr"};
     }
     
     @Override
@@ -30,5 +31,9 @@ public class Pawn extends Piece  {
     @Override
     public String print(){
         return this.getPieceType()+ "(" + this.getId()+ ")";
+    }
+    
+    public String printInputPrompt(){
+        return "Would you like to move forward(f), diagonally forward left (dfl) or diagonally forward left (dfr)?";
     }
 }

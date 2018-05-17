@@ -95,14 +95,26 @@ public class Board {
         this.board[proposedPosition.getPositionX()][proposedPosition.getPositionY()] = piece;
     }
     
-    public void draw(){
-        PlayerFont.getHorizontalBorder();
-        for (int x = 0; x < 8; x++){
-           System.out.print("| ");
-           for (int y = 0; y < 8; y++){
-                System.out.print(PlayerFont.getPlayerFont(this.board[x][y]) + " | ");
+    public void draw(char color){
+        if (color == 'b'){
+            PlayerFont.getHorizontalBorder();
+            for (int x = 0; x < 8; x++){
+               System.out.print("| ");
+               for (int y = 0; y < 8; y++){
+                    System.out.print(PlayerFont.getPlayerFont(this.board[x][y]) + " | ");
+                }
+               PlayerFont.getHorizontalBorder();
             }
-           PlayerFont.getHorizontalBorder();
+        }
+        if (color == 'w'){
+            PlayerFont.getHorizontalBorder();
+            for (int x = 7; x >= 0; x--){
+               System.out.print("| ");
+               for (int y = 7; y >= 0; y--){
+                    System.out.print(PlayerFont.getPlayerFont(this.board[x][y]) + " | ");
+                }
+               PlayerFont.getHorizontalBorder();
+            }
         }
     }
 }

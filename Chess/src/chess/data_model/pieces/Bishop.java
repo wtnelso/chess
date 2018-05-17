@@ -20,6 +20,7 @@ public class Bishop extends Piece {
         this.verticalMoveMax = 0;
         this.horizontalMoveMax = 0;
         this.diagonalMoveMax = 8;
+        this.acceptableMoveInputs = new String[] {"dfl", "dfr","dbl", "dbr"};
     }
         
     @Override
@@ -35,5 +36,10 @@ public class Bishop extends Piece {
     @Override
     public String print(){
         return this.getPieceType()+ "(" + this.getId()+ ")";
+    }
+    
+    @Override
+    public String printInputPrompt(){
+        return "diagonally forward left (dfl), diagonally forward left (dfr), diagonally backward left (dbl) or diagonally backward right (dbr)?";
     }
 }

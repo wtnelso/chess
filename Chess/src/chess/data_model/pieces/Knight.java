@@ -42,4 +42,9 @@ public class Knight extends Piece {
     public String print(){
         return this.getPieceType()+ "(" + this.getId()+ ")";
     }
+    
+    @Override
+    public String printInputPrompt(){
+        return "Would you like to move forward(f), backward(b), left(l) or right(r)?";
+    }
 }

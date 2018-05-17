@@ -16,8 +16,6 @@ public class Player {
     private String _fullColor;
     private int _aliveCount;
     private boolean _isCurrentPlayer;
-    private boolean _isPieceInput;
-    private boolean _isMoveInput;
     
     public Player(char color, String fullColor){
         this._color = color;
@@ -50,7 +48,7 @@ public class Player {
         return this._color;
     }
     
-    public String geFulltColor(){
+    public String getFullColor(){
         return this._fullColor;
     }
     
@@ -58,21 +56,5 @@ public class Player {
         if (boardResponse.isEnemyKilled()){
             this._decreaseAliveCount();
         }
-    }
-    
-    public void setIsPieceInput(boolean isPieceInput){
-        this._isPieceInput = isPieceInput;
-    }
-    
-    public boolean isPieceInput(){
-        return this._isPieceInput;
-    }
-    
-    public void setIsMoveInput(boolean isMoveInput){
-        this._isMoveInput = isMoveInput;
-    }
-    
-    public boolean isMoveInput(){
-        return this._isMoveInput;
     }
 }

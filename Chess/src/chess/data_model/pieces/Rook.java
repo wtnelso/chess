@@ -20,6 +20,7 @@ public class Rook extends Piece {
         this.verticalMoveMax = 8;
         this.horizontalMoveMax = 8;
         this.diagonalMoveMax = 0;
+        this.acceptableMoveInputs = new String[] {"f", "b", "l", "r"};
     }
 
     @Override
@@ -34,5 +35,10 @@ public class Rook extends Piece {
     @Override
     public String print(){
         return this.getPieceType()+ "(" + this.getId()+ ")";
+    }
+    
+    @Override
+    public String printInputPrompt(){
+        return "Would you like to move forward(f), backward(b), left(l) or right(r)?";
     }
 }

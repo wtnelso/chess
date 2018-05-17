@@ -18,11 +18,16 @@ public class Piece {
         public char pieceType = ' ';
         public boolean isPiece;
         public boolean isBackward;
+        public boolean isDiagonal;
+        public boolean isHorizontal;
+        public boolean isLeft;
         public int firstMoveMax;
         public boolean isfirstMoveUsed;
         public int verticalMoveMax;
         public int horizontalMoveMax;
         public int diagonalMoveMax;
+        public String[] acceptableMoveInputs;
+        
         private final boolean _isAlive;
         
         public Piece(){
@@ -111,5 +116,13 @@ public class Piece {
         
         public String print(){
             return "     ";
+        }
+        
+        public String printInputPrompt(){
+            return "";
+        }
+        
+        public String[] getAcceptableMoveInputs(){
+            return this.acceptableMoveInputs;
         }
 }

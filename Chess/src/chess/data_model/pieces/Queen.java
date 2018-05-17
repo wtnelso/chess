@@ -20,6 +20,7 @@ public class Queen extends Piece {
         this.verticalMoveMax = 8;
         this.horizontalMoveMax = 8;
         this.diagonalMoveMax = 8;
+        this.acceptableMoveInputs = new String[] {"f", "b", "l", "r", "dfl", "dfr","dbl", "dbr"};
     }
         
     @Override
@@ -35,5 +36,10 @@ public class Queen extends Piece {
     @Override
     public String print(){
         return this.getPieceType()+ "(" + this.getId()+ ")";
+    }
+    
+    @Override
+    public String printInputPrompt(){
+        return "Would you like to move forward(f),backward(b), left(l), right(r), diagonally forward left (dfl), diagonally forward left (dfr), diagonally backward left (dbl) or diagonally backward right (dbr)?";
     }
 }

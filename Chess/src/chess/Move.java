@@ -32,14 +32,14 @@ public class Move {
         this._diagonalMove = 0;
     }
     
-    private final boolean _isBackwardMove;
-    private final boolean _isVerticalMove;
-    private final boolean _isHorizontalMove;
-    private final boolean _isLeftMove;
-    private final boolean _isDiagonalMove;
-    private final int _verticalMove;
-    private final int _horizontalMove;
-    private final int _diagonalMove;
+    private boolean _isBackwardMove;
+    private boolean _isVerticalMove;
+    private boolean _isHorizontalMove;
+    private boolean _isLeftMove;
+    private boolean _isDiagonalMove;
+    private int _verticalMove;
+    private int _horizontalMove;
+    private int _diagonalMove;
 
     public boolean isBackwardMove(){
         return this._isBackwardMove;
@@ -74,5 +74,36 @@ public class Move {
 
     public int getTotalMoveSize(){
         return this.getVerticalMove() + this.getHorizontalMove() + this.getDiagonalMove();
+    }
+    
+    public void setIsBackwardMove(boolean isBackwardMove){
+        this._isBackwardMove = isBackwardMove;
+    }
+
+    public void setIsVerticalMove(boolean isVerticalMove){
+       this._isVerticalMove = isVerticalMove;
+    }
+
+    public void setIsHorizontalMove(boolean isHorizontalMove){
+        this._isHorizontalMove = isHorizontalMove;
+    }
+
+    public void setIsLeftMove(boolean isLeftMove){
+        this._isLeftMove = isLeftMove;
+    }
+
+    public void setIsDiagonallMove(boolean isDiagonalMove){
+        this._isDiagonalMove = isDiagonalMove;
+    }
+
+    public void setVerticalMove(int verticalMove){
+        this._verticalMove = verticalMove;
+    }
+
+    public void setHorizontalMove(int horizontalMove){
+        this._horizontalMove = horizontalMove;
+    }
+    public void setDiagonalMove(int diagonalMove){
+        this._diagonalMove = diagonalMove;
     }
 }
