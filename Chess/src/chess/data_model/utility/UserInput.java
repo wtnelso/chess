@@ -63,7 +63,12 @@ public final class UserInput {
             }            
         }
         if(gameController.isMoveSpaceInput()){
-            
+            if(! this._isUserSpaceInputValid()){
+                return new UserInputResponse(false, "Cannot Move Piece That Amount Of Spaces");
+            } else {
+                gameController.setInputs(false, false, false, this.getPiece());
+                return new UserInputResponse(true, "");
+            }
         }
         return new UserInputResponse(true, "");
         
@@ -109,10 +114,43 @@ public final class UserInput {
     private boolean _isUserSpaceInputValid(){
         Piece currentPiece = this.getPiece();
         Move currentMove = this.getMove();
+        boolean isFirstMoveAcceptableOrUsed = currentPiece.isFirstMoveUsed() ? true : currentMove.getTotalMoveSize() <= currentPiece.getFirstMoveMax();
         
-        
-        
-        return true;
+        if (isFirstMoveAcceptableOrUsed) {
+            //Forward
+            if (currentMove.isVerticalMove() && ! currentMove.isBackwardMove() && ! currentMove.isDiagonallMove()) {
+                return currentMove.getVerticalMove() <= currentPiece.getVerticalMoveMax();
+            } 
+            //Backward
+            else if (currentMove.isVerticalMove() && currentMove.isBackwardMove() && ! currentMove.isDiagonallMove()) {
+               return currentMove.getVerticalMove() <= currentPiece.getVerticalMoveMax(); 
+            }
+            //Left
+            else if (currentMove.isHorizontalMove() && currentMove.isLeftMove() && ! currentMove.isDiagonallMove()) {
+               return currentMove.getHorizontalMove() <= currentPiece.getHorizontalMoveMax();
+            }
+            //Right
+            else if (currentMove.isHorizontalMove() && ! currentMove.isLeftMove() && ! currentMove.isDiagonallMove()) {
+               return currentMove.getHorizontalMove() <= currentPiece.getHorizontalMoveMax();
+            }
+            //Diagonal Forward Left
+            else if (currentMove.isDiagonallMove() && currentMove.isLeftMove() && ! currentMove.isBackwardMove()) {
+               return currentMove.getDiagonalMove()<= currentPiece.getDiagonalMoveMax();
+            }
+            //Diagonal Forward Right
+            else if (currentMove.isDiagonallMove() && ! currentMove.isLeftMove() && ! currentMove.isBackwardMove()) {
+               return currentMove.getDiagonalMove() <= currentPiece.getDiagonalMoveMax();
+            }
+            //Diagonal Backward Left
+            else if (currentMove.isDiagonallMove() && currentMove.isLeftMove() && currentMove.isBackwardMove()) {
+               return currentMove.getDiagonalMove() <= currentPiece.getDiagonalMoveMax();
+            }
+            //Diagonal Backward Right
+            else if (currentMove.isDiagonallMove() && ! currentMove.isLeftMove() && currentMove.isBackwardMove()) {
+               return currentMove.getDiagonalMove() <= currentPiece.getDiagonalMoveMax();
+            }
+        }
+        return false;
     }
     
     private void setMoveDirection(String inputString){
